@@ -1,0 +1,7 @@
+<apex:page controller="RequestControllerExtension">
+<apex:pageBlock title="Products">
+<apex:pageBlockTable value="{! product2 }" var="pr">
+    <apex:column value="{! pr.Name }"/>  
+</apex:pageBlockTable>
+    </apex:pageBlock>
+</apex:page>

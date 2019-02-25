@@ -1,0 +1,40 @@
+<apex:page showHeader="false" Controller="HomeController" title="KevlakClothes - {!prdct.Name}" docType="html-5.0" >
+    <apex:includeScript value="{! $Resource.homejs }"/>
+    <apex:stylesheet value="{!$Resource.pgblcktblcss}" />
+<center>
+  <a href="http://kevlakclothes-developer-edition.ap8.force.com/"><apex:image url="https://i.ibb.co/48TQf06/index.png" height="150" width="150" alt="KevlakClothes"/></a>
+    </center>
+    <div align="right" style="margin-right: 40px; margin-bottom: 15px">
+   <apex:form id="theForm" > <apex:outputText style="font-size: 17px;" value="Find the product you want: "></apex:outputText> 
+       <input required="required" id="fnd" style="font-size: 15px;"/>
+        <apex:image style="margin-left: 5px;" onclick="findProduct()" url="http://www.clker.com/cliparts/n/C/y/X/u/K/search-icon-md.png" height="30" width="30" alt="KevlakClothes"/>
+        </apex:form>
+    </div>
+    <apex:form style="margin: 10px; font-size: 15px;">
+        <apex:pageBlock title="Create request">
+        <apex:outputLabel value="Your email: "/>
+            <apex:input type="email" required="required" id="mailid" value="{!email}"/>                      
+            <apex:commandbutton action="{!crtRqst}" value="Create request" onclick="openAlert()"/>
+        </apex:pageBlock>
+    </apex:form>
+    <div style="margin: 10px;">
+        <div style="float:left">
+    <apex:image url="{!prdct.Image_URL__c}" height="640" width="500"/>
+        </div>
+        <apex:outputLabel value="Type: " style="font-size: 50px; margin: 10px; line-height: 2em; font-weight:bold;"/>
+        <br />
+            <apex:outputLabel value="{!prdct.Name}" style="font-size: 25px; margin: 10px;"/>
+            <br />
+        <apex:outputLabel value="ProductCode: " style="font-size: 50px; margin: 10px; line-height: 2em; font-weight:bold"/>
+        <br />
+    <apex:outputLabel value="{!prdct.ProductCode}" style="font-size: 25px; margin: 10px;"/>
+        <br />
+        <apex:outputLabel value="Price: " style="font-size: 50px; margin: 10px; line-height: 2em; font-weight:bold"/>
+        <br />
+    <apex:outputLabel value="{!prdct.PricebookEntries[0].UnitPrice}$" style="font-size: 25px; margin: 10px;"/>
+        <br />
+         <apex:outputLabel value="Description: " style="font-size: 50px; margin: 10px; line-height: 2em; font-weight:bold"/>
+        <br />
+        <apex:outputLabel value="{!prdct.description}" style="font-size: 25px; margin: 10px;"/>
+    </div>
+</apex:page>

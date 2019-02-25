@@ -1,0 +1,31 @@
+<apex:page id="prdlist" showHeader="false" Controller="CustomController" title="KevlakClothes - Home" docType="html-5.0">
+    <apex:includeScript value="{! $Resource.productListjs }"/>
+    <apex:stylesheet value="{!$Resource.pgblcktblcss}" />
+<center>
+    <a href="http://kevlakclothes-developer-edition.ap8.force.com/">
+        <apex:image url="https://i.ibb.co/48TQf06/index.png" height="150" width="150" alt="KevlakClothes"/>
+    </a>
+    </center>
+    <div align="right" style="margin-right: 40px; margin-bottom: 15px">
+   <apex:form id="theForm" > <apex:outputText style="font-size: 17px;" value="Find the product you want: ">
+       </apex:outputText> <input value="{!srch2}" required="required" id="fnd" style="font-size: 15px;"/>
+        <apex:image style="margin-left: 5px;" id="fndbtn" onclick="findProduct()" url="http://www.clker.com/cliparts/n/C/y/X/u/K/search-icon-md.png" height="30" width="30" alt="KevlakClothes"/>
+        </apex:form>
+    </div>
+    <apex:form id="pg1">
+<apex:pageBlock title="Products" >
+<apex:pageBlockTable style="width:100%" value="{!Products}" var="good" onRowClick="openProduct('{!good.Id}');" >
+    <apex:column style="width:450px" value="{! good.name }"/>
+    <apex:column style="width:444px"><apex:image height="100" width="80" url="{!good.imagec}"/></apex:column>
+    <apex:column style="width:50px" value="{! good.price }$"/>
+</apex:pageBlockTable>
+    <apex:outputLabel >Total number of products:{!tot}</apex:outputLabel><br/>
+    <div align="center">
+ <apex:commandButton value="First Page" action="{!Firstbtn}" disabled="{!prv}" reRender="pg1"/>
+ <apex:commandButton value="PreviousPage" action="{!prvbtn}" disabled="{!prv}" reRender="pg1"/>
+        <apex:commandButton value="NextPage" action="{!Nxtbtn}" disabled="{!nxt}" reRender="pg1"/>
+        <apex:commandButton value="LastPage" action="{!lstbtn}" disabled="{!nxt}" reRender="pg1"/>
+ </div>
+    </apex:pageBlock>
+    </apex:form>
+</apex:page>

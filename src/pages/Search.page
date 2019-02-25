@@ -1,0 +1,22 @@
+<apex:page showHeader="false" Controller="SearchController" title="KevlakClothes - Search">
+    <apex:includeScript value="{! $Resource.searchjs }"/>
+    <apex:stylesheet value="{!$Resource.pgblcktblcss}" />
+<center>
+    <a href="http://kevlakclothes-developer-edition.ap8.force.com/"><apex:image url="https://i.ibb.co/48TQf06/index.png" height="150" width="150" alt="KevlakClothes"/></a>
+    </center>
+    <div align="right" style="margin-right: 40px; margin-bottom: 15px">
+   <apex:form id="theForm" > <apex:outputText style="font-size: 17px;" value="Find the product you want: "></apex:outputText> <input required="required" id="fnd" style="font-size: 15px;"/>
+        <apex:image style="margin-left: 5px;" onclick="findProduct()" url="http://www.clker.com/cliparts/n/C/y/X/u/K/search-icon-md.png" height="30" width="30" alt="KevlakClothes"/>
+        </apex:form>
+    </div>
+    <apex:form id="pg2">
+<apex:pageBlock title="Products" >
+<apex:pageBlockTable style="width:100%" value="{!search}" var="srch" onRowClick="openProduct('{!srch.Id}');" >
+    <apex:column style="width:450px" value="{! srch.name }"/>
+    <apex:column style="width:444px" value="{! srch.image__c }"/>
+    <apex:column style="width:50px" value="{! srch.PricebookEntries[0].UnitPrice }"/>
+</apex:pageBlockTable>
+        </apex:pageBlock>
+        <center><apex:outputLabel style="font-size: 35px;" >{!notfound}</apex:outputLabel></center>
+    </apex:form>
+</apex:page>
